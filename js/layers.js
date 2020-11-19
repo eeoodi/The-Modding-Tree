@@ -35,6 +35,13 @@ addLayer("j", {
             cost: new Decimal(3),
             unl() { return player.p.unl },
         },
+        rows: 1 ,
+        cols: 3 ,
+        13: {
+            description: "Blah3",
+            cost: new Decimal(6),
+            unl() { return player.p.unl },
+        },
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
