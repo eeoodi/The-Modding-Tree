@@ -2,7 +2,7 @@ let modInfo = {
 	name: "The jepan Tree",
 	id: "qwerasdf",
 	author: "nobody",
-	pointsName: "jap",
+	pointsName: "japise",
 	discordName: "",
 	discordLink: "",
 	changelogLink: "https://github.com/Acamaeda/The-Modding-Tree/blob/master/changelog.md",
@@ -49,7 +49,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("1e1e200"))
+	return player.points.gte(new Decimal("1e200"))
 }
 
 
