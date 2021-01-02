@@ -20,29 +20,7 @@ addLayer("j", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    upgrades: {
-        rows: 1 ,
-        cols: 1 ,
-        11: {
-            description: "Blah",
-            cost: new Decimal(1),
-            unl() { return player.p.unl },
-        },
-        rows: 1 ,
-        cols: 2 ,
-        12: {
-            description: "Blah2",
-            cost: new Decimal(3),
-            unl() { return player.p.unl },
-        },
-        rows: 1 ,
-        cols: 3 ,
-        13: {
-            description: "Blah3",
-            cost: new Decimal(6),
-            unl() { return player.p.unl },
-        },
-    },
+    
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "j", description: "Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
