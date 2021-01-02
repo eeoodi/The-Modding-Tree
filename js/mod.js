@@ -2,7 +2,7 @@ let modInfo = {
 	name: "The jepan Tree",
 	id: "qwerasdf",
 	author: "nobody",
-	pointsName: "japise",
+	pointsName: "point",
 	discordName: "",
 	discordLink: "",
 	changelogLink: "https://github.com/Acamaeda/The-Modding-Tree/blob/master/changelog.md",
