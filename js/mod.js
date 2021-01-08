@@ -41,7 +41,8 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
-	  let gain = new Decimal(1).times(layers["p"].effect().add(1))
+	  let gain = new Decimal(player.p.points)
+
 	return gain
 }
 
