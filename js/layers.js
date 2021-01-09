@@ -7,6 +7,7 @@ addLayer("a", {
         points: new Decimal(0),
                total: new Decimal(0),
     }},
+    branches:[],
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "a dimensions", // Name of prestige currency
@@ -36,6 +37,7 @@ addLayer("b", {
         points: new Decimal(0),
         total: new Decimal(0),
     }},
+    branches:["a"],
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "b dimensions", // Name of prestige currency
@@ -50,7 +52,7 @@ addLayer("b", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 0, // Row the layer is in on the tree (0 is the first row)
+    row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
