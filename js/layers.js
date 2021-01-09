@@ -5,7 +5,7 @@ addLayer("a", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
-               best: new Decimal(0),
+               total: new Decimal(0),
     }},
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -33,7 +33,8 @@ addLayer("b", {
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
-		points: new Decimal(0),
+        points: new Decimal(0),
+        total: new Decimal(0),
     }},
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -53,6 +54,6 @@ addLayer("b", {
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return player.a.best > 20
+    layerShown(){return player.a.total > 20 || player.b.total > 1}
 }
-})
+)

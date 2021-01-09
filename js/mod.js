@@ -1,6 +1,6 @@
 let modInfo = {
-	name: "The ??? Tree",
-	id: "mymod",
+	name: "The omg Tree",
+	id: "omg",
 	author: "nobody",
 	pointsName: "points",
 	discordName: "",
@@ -12,7 +12,7 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.0",
+	num: "1.1",
 	name: "b layer",
 }
 
@@ -41,7 +41,7 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
-	  let gain = new Decimal(player.a.points * player.b.points)
+	  let gain = new Decimal(player.a.points * (player.b.points + 1))
 
 	return gain
 }
