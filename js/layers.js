@@ -16,12 +16,28 @@ addLayer("a", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(1)
+        mult = player.b.points + 1
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    upgrades: {
+        rows: 1,
+        cols: 1, 
+        11: {
+            description: "omg1",
+            cost: new Decimal(100),
+        },
+    },
+    update(diff){
+        let data = player.a
+        if (hasUpgrade("a", 11)) {
+                data.points = data.points.plus(tmp.a.getResetGain.times(diff))
+                data.total = data.total.plus(tmp.a.getResetGain.times(diff))
+               }
+        },
+    
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
@@ -41,7 +57,7 @@ addLayer("b", {
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "b dimensions", // Name of prestige currency
-    baseResource: "a dimension", // Name of resource prestige is based on
+    baseResource: "a dimensions", // Name of resource prestige is based on
     baseAmount() {return player.a.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
