@@ -18,8 +18,9 @@ addLayer("a", {
     gainMult() { // Calculate the multiplier for main currency from bonuse
         if (hasUpgrade(p,11)){
             (mult = player.b.points + 1) * 2
-        }
-        mult = player.b.points + 1
+    }else{
+        mult = player.b.points + 1  
+    }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
