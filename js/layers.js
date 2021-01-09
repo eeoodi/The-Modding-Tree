@@ -16,7 +16,7 @@ addLayer("a", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuse
-        if (hasUpgrade(a,11)){
+        if (hasUpgrade("a",11)){
             (mult = player.b.points + 1) * 2
     }else{
         mult = player.b.points + 1  
