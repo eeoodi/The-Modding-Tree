@@ -12,7 +12,7 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.3",
+	num: "1.4",
 	name: "b layer",
 }
 
@@ -41,7 +41,7 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
-	  let gain = new Decimal(player.a.points * (player.b.points + 1))
+	  let gain = new Decimal(player.a.points * (1 + player.b.points ))
 
 	return gain
 }

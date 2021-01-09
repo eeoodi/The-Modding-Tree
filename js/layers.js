@@ -15,7 +15,10 @@ addLayer("a", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
-    gainMult() { // Calculate the multiplier for main currency from bonuses
+    gainMult() { // Calculate the multiplier for main currency from bonuse
+        if (hasUpgrade(p,11)){
+            (mult = player.b.points + 1) * 2
+        }
         mult = player.b.points + 1
         return mult
     },
@@ -30,13 +33,6 @@ addLayer("a", {
             cost: new Decimal(100),
         },
     },
-    update(diff){
-        let data = player.a
-        if (hasUpgrade("a", 11)) {
-                data.points = data.points.plus(tmp.a.getResetGain.times(diff))
-                data.total = data.total.plus(tmp.a.getResetGain.times(diff))
-               }
-        },
     
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
