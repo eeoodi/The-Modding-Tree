@@ -69,6 +69,6 @@ addLayer("b", {
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return player.a.total > 20 || player.b.total > 1}
+    layerShown(){return player.a.total > 19 || player.b.total > 0}
 }
 )
