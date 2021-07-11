@@ -1,5 +1,5 @@
 addLayer("a", {
-    name: "a dimension", // This is optional, only used in a few places, If absent it just uses the layer id.
+    name: "a point", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "a", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
@@ -10,16 +10,18 @@ addLayer("a", {
     branches:[],
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
-    resource: "a dimensions", // Name of prestige currency
+    resource: "a points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuse
-        if (hasUpgrade("a",11)){
-            (mult = player.b.points + 1) * 2
-    }else{
-        mult = player.b.points + 1  
+      mult = 1  
+    if (hasUpgrade("a",12)){
+        mult = mult + player.b.points + 1
+    }
+    if (hasUpgrade("a",11)){
+        mult = mult * 2
     }
         return mult
     },
@@ -30,19 +32,23 @@ addLayer("a", {
         rows: 1,
         cols: 1, 
         11: {
-            description: "omg1",
+            description: "a points *2",
+            cost: new Decimal(100),
+        },
+        12: {
+            description: "b points is boust a points",
             cost: new Decimal(100),
         },
     },
     
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "a", description: "A: Reset for a points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}
 })
 addLayer("b", {
-    name: "b dimension", // This is optional, only used in a few places, If absent it just uses the layer id.
+    name: "b point", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "b", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
@@ -53,8 +59,8 @@ addLayer("b", {
     branches:["a"],
     color: "#4BDC13",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
-    resource: "b dimensions", // Name of prestige currency
-    baseResource: "a dimensions", // Name of resource prestige is based on
+    resource: "b points", // Name of prestige currency
+    baseResource: "a points", // Name of resource prestige is based on
     baseAmount() {return player.a.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
